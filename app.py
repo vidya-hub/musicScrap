@@ -27,30 +27,34 @@ try:
         if os.path.exists(realmoviename):
             for i in range(len(song_links)):
                 file_path = "./"+realmoviename+"/" + song_names[i]+".mp3"
-                subprocess.check_output(['wget', '-O', file_path, song_links[i]])
+                subprocess.check_output(
+                    ['wget', '--no-check-certificate', '-O', file_path, song_links[i]])
         else:
             os.mkdir(realmoviename)
             for i in range(len(song_links)):
                 file_path = "./"+realmoviename+"/" + song_names[i]+".mp3"
-                subprocess.check_output(['wget', '-O', file_path, song_links[i]])
+                subprocess.check_output(
+                    ['wget', '--no-check-certificate', '-O', file_path, song_links[i]])
     elif (confirm.lower() == "n"):
         for i in range(len(song_names)):
             print(f"[ {i} ]" + song_names[i])
-            
+
         if os.path.exists(realmoviename):
             selected_songno = int(input("Enter Song No... :     "))
             selected_songlink = song_links[selected_songno]
             selected_songname = song_names[selected_songno]
             file_path = "./"+realmoviename+"/" + selected_songname+".mp3"
-            subprocess.check_output(['wget', '-O', file_path, selected_songlink])
+            subprocess.check_output(
+                ['wget', '--no-check-certificate', '-O', file_path, selected_songlink])
         else:
-            os.mkdir(realmoviename)        
+            os.mkdir(realmoviename)
             selected_songno = int(input("Enter Song No... :     "))
             selected_songlink = song_links[selected_songno]
             selected_songname = song_names[selected_songno]
             file_path = "./"+realmoviename+"/" + selected_songname+".mp3"
-            subprocess.check_output(['wget', '-O', file_path, selected_songlink])
-        
+            subprocess.check_output(
+                ['wget', '--no-check-certificate', '-O', file_path, selected_songlink])
+
     # print(song_links)
     # for con in songs_content:
     #     print(con.text)
